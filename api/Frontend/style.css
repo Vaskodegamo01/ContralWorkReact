@@ -1,0 +1,35 @@
+.container {
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid #278ccc;
+    padding: 25px;
+    position: relative;
+}
+
+#formRegister {
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+#formLogin {
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+#formData {
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+#logout {
+    background: #cc3b37;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
