@@ -20,10 +20,11 @@ const createRouter = () => {
     const router = express.Router();
 
     router.post('/', upload.none(), (req, res) => {
-        console.log(req.body);
         const user = new User({
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            displayname: req.body.displayname,
+            phone: req.body.phone
         });
         user.generateToken();
         user.save()
@@ -48,7 +49,7 @@ const createRouter = () => {
 
         await user.save();
 
-        res.send({name: user.username, token: user.token});
+        res.send({name: user.username, token: user.token, displayname: user.displayname});
     });
 
     router.delete('/sessions', async (req, res) => {

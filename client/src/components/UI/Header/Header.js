@@ -13,7 +13,6 @@ const Header = (props) => {
                 <NavLink to='/'><img className='logo' src={logo} alt=""/></NavLink>
                 <Nav className="mr-auto">
                     <NavLink exact className='buttonNav' activeClassName='buttonNavActive' to="/">Home</NavLink>
-                    <NavLink  className='buttonNav' activeClassName='buttonNavActive' to="/addProduct">addProduct</NavLink>
                 </Nav>
                 {props.children}
             </Navbar>

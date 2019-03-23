@@ -79,14 +79,14 @@ db.once('open', async () => {
         title: 'asuss800',
         price: 1000,
         description: 'top motherboard',
-        image: "motheboard.jpg",
+        image: "motherboard.jpg",
         category: motherboards._id,
         userId: user._id
     }, {
         title: 'abitp4',
         price: 1000,
         description: 'powerful motherboard',
-        image: "motheboard.jpg",
+        image: "motherboard.jpg",
         category: motherboards._id,
         userId: user._id
     });
