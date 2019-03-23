@@ -1,8 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import {fetchProduct,fetchCategoty,changecategory,chooseitem} from "../../store/actions";
-
-
+import {fetchProduct, fetchCategoty, changecategory, chooseitem, fetchback,fetchdeleteitem} from "../../store/actions";
+import {NavLink} from "react-router-dom";
 
 class HomePage extends Component {
 
@@ -21,8 +20,12 @@ class HomePage extends Component {
                             return (
                                 <div key={index}>
                                     <img src={url + item.image} alt=""/>
-                                    <span>{item.title}</span>
-                                    <span>{item.price} USD</span>
+                                    <p>Category item: {item.category.title}</p>
+                                    <p>Item title: {item.title}</p>
+                                    <p>Item description: {item.description}</p>
+                                    <p>Item price: {item.price}</p>
+                                    <NavLink onClick={()=>this.props.fetchback()} exact className='buttonNav' activeClassName='buttonNavActive' to="/">Back</NavLink>
+                                    {this.props.user.name === item.userId.username ?  <button id={item._id} onClick={(e)=>this.props.fetchdeleteitem(e,this.props.user.token)}>delete</button> : null}
                                 </div>
                             )
                         }
@@ -73,7 +76,8 @@ const mapStateToProps = (state)=>{
         products: state.products,
         categories: state.categories,
         currentcategory: state.currentcategory,
-        choose: state.choose
+        choose: state.choose,
+        user: state.user
     }
 };
 
@@ -82,7 +86,9 @@ const mapDispatchToProps = dispatch => {
         fetchProduct:(url) => dispatch(fetchProduct(url)),
         fetchCategoty:()=>dispatch(fetchCategoty()),
         changecategory:(e) => dispatch(changecategory(e)),
-        chooseitem:(e) => dispatch(chooseitem(e))
+        chooseitem:(e) => dispatch(chooseitem(e)),
+        fetchback:() => dispatch(fetchback()),
+        fetchdeleteitem:(e,token) => dispatch(fetchdeleteitem(e,token))
     }
 };
 

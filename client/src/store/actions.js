@@ -1,6 +1,6 @@
 import axios from '../axios-shop';
 
-
+export const BACK = 'BACK';
 export const CHOOSEITEM = 'CHOOSEITEM';
 export const CHANGECATEGORY = 'CHANGECATEGORY';
 export const CHANGELOGININPUT = 'CHANGELOGININPUT';
@@ -128,5 +128,18 @@ export const changecategory = (event) => {
 export const chooseitem = (event) => {
     return { type: CHOOSEITEM,event};
 };
+
+export const fetchback = () => {
+    return { type: BACK};
+};
+
+
+export const fetchdeleteitem = (e,token) => {
+    return dispatch => {
+        let headers = {"Token": token};
+        axios.delete(`products/${e.currentTarget.id}`,{headers}).then(() => {
+            dispatch(fetchback())
+        }).then(()=> dispatch(fetchProduct("products")))
+    }};
 
 

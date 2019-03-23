@@ -1,5 +1,5 @@
 import {CHANGELOGININPUT, FETCH_FORM_REQUEST, FETCH_FORM_SUCCESS,CHANGEFILE,CHANGETEXT,
-    FETCH_COTEGORY_SUCCESS, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_POST_SUCCESS,CHANGECATEGORY, CHOOSEITEM} from './actions'
+    FETCH_COTEGORY_SUCCESS, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_POST_SUCCESS,CHANGECATEGORY, CHOOSEITEM, BACK} from './actions'
 
 const initialState = {
     login:{},
@@ -40,8 +40,10 @@ const reducer = (state = initialState, action) => {
             return {...state , choose: action.event.currentTarget.id};
         case FETCH_PRODUCT_POST_SUCCESS:
             return {...state, products:action.data};
+        case BACK:
+            return {...state, choose:""};
         case FETCH_PRODUCT_SUCCESS:
-            let my1state
+            let my1state;
             my1state = {...state};
             my1state.productdata = action.data;
             return my1state;
